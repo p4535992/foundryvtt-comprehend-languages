@@ -1,4 +1,9 @@
-<<<<<<< HEAD
+
+## 13.0.0 (2026-02-18)
+
+- Done: https://github.com/p4535992/foundryvtt-comprehend-languages/issues/2
+- Add PR: https://github.com/p4535992/foundryvtt-comprehend-languages/pull/8
+
 ## [2.3.0] (2025-05-29)
 Adding own Reverse Proxy to the DeepL API to prevent the "Fetch to fail" Error message.
 Since the proxy address is not configurable at the moment do not use this release if you don't trust me using my proxy to circumvent DEEPLs CORS Policy.
@@ -45,4 +50,4 @@ Your request will include your API key and your content which will pass through 
 
 * Bug fix: Clarified description of InPlace Setting and reordered settings ([a852231](https://github.com/Meneltamar/fvtt-comprehend-languages/commit/a8522310c0d0379a26523ee605cc5ddefb0491b5))
 * Bug fix: Release workflow ([1de9634](https://github.com/Meneltamar/fvtt-comprehend-languages/commit/1de9634ca6af605305a7b57ac1735e1a69781e7a))
->>>>>>> master
+
