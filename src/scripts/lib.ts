@@ -15,14 +15,29 @@ Hooks.once("init", () => {
   ComprehendLanguages.initialize();
 });
 
+// The hook fires for every ApplicationV2 window, so the control is only added to the sheets of the
+// documents this module can translate, and each one goes to its own translator.
 Hooks.on("getHeaderControlsApplicationV2", (sheet, menu) => {
+  if (!game.user.isGM) {
+    return;
+  }
+  const documentToTranslate = sheet.document;
+  const isJournalEntry = documentToTranslate instanceof JournalEntry;
+  const isItem = documentToTranslate instanceof Item;
+  if (!isJournalEntry && !isItem) {
+    return;
+  }
   menu.push({
     "icon": "fas fa-eye",
     "label": "Translate",
     "visible": true,
-    "action": "translateJournal",
+    "action": "comprehendLanguagesTranslate",
     "onClick": function(e) {
-      ComprehendLanguagesTranslator.buttonTranslateJournalEntry(sheet.document);
+      if (isJournalEntry) {
+        ComprehendLanguagesTranslator.buttonTranslateJournalEntry(documentToTranslate);
+      } else {
+        ComprehendLanguagesTranslator.buttonTranslateItem(documentToTranslate);
+      }
     }
   });
 });
